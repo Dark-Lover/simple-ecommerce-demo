@@ -7,17 +7,18 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Source Sans Pro',sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 `;
 
 export const Container = styled.div`
+  background-color: ${({ bg }) => (bg ? "#000" : "")};
   z-index: 1;
   width: 100%;
   max-width: 1300px;
   margin: ${({ margin }) => (margin ? margin : "0 auto")};
   padding: ${({ padding }) => (padding ? padding : "0 50px")};
-  @media screen and (max-width: 960px) {
+  @media screen and (min-width: 960px) {
     padding-right: 30px;
     padding-left: 30px;
   }
@@ -79,6 +80,7 @@ export const Section = styled.section`
 `;
 
 export const Row = styled.div`
+  background-color: ${({ bg }) => (bg ? bg : "")};
   display: flex;
   justify-content: ${({ justify }) => (justify ? justify : "")};
   align-items: ${({ align }) => (align ? align : "")};
