@@ -1,13 +1,22 @@
 import styled from "styled-components";
+import GlobalStyle from "../../GlobalStyles";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgClose } from "react-icons/cg";
 
+export const HeaderContainer = styled.header`
+  background-color: black;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease;
+`;
 export const Logo = styled(Link)`
-  background-color: #1f00f0;
-  min-height: 2rem;
-  min-width: 2rem;
-  border-radius: 50%;
+  background-color: green;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 30%;
 `;
 
 export const Hamburger = styled(GiHamburgerMenu)`
@@ -15,6 +24,7 @@ export const Hamburger = styled(GiHamburgerMenu)`
   right: 30px;
   z-index: 100;
   cursor: pointer;
+  color: white;
 `;
 
 export const Close = styled(CgClose)`
@@ -23,12 +33,5 @@ export const Close = styled(CgClose)`
   z-index: 100;
   font-size: 1.2rem;
   cursor: pointer;
-`;
-
-export const MobileMenu = styled.div`
-  display: flex;
-  align-items: center;
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
+  color: white;
 `;
