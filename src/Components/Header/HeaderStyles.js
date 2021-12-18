@@ -7,6 +7,7 @@ import { CgClose } from "react-icons/cg";
 export const HeaderContainer = styled.header`
   width: 100%;
   border-bottom: 1px solid #8e44ad;
+  background-color: #eee;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -18,6 +19,7 @@ export const HeaderWrapper = styled.div`
   position: relative;
   max-width: 1280px;
   margin: auto;
+  min-height: 56px;
 `;
 
 export const Logo = styled(Link)`
@@ -47,5 +49,5 @@ export const Close = styled(CgClose)`
   z-index: 100;
   font-size: 1.2rem;
   cursor: pointer;
-  color: #8e44ad;
+  color: white;
 `;

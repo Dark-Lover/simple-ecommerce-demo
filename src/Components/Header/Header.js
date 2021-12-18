@@ -12,7 +12,6 @@ import Navbar from "../Navbar/Navbar";
 
 const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
-  console.log(isMobile);
   const [toggle, setToggle] = useState(false);
   return (
     <HeaderContainer>

@@ -5,10 +5,10 @@ const Navbar = () => {
   return (
     <NavbarContainer>
       <NavItems>
-        <NavItem>Monitors</NavItem>
-        <NavItem>Headphones</NavItem>
-        <NavItem>Keyboards</NavItem>
-        <NavItem>
+        <NavItem to="/monitors">Monitors</NavItem>
+        <NavItem to="/headphones">Headphones</NavItem>
+        <NavItem to="/keyboards">Keyboards</NavItem>
+        <NavItem to="/cart">
           <Cart />
         </NavItem>
       </NavItems>

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { Heading } from "../../GlobalStyles";
 import Header from "../../Components/Header/Header";
+import Content from "../../Components/Content/Content";
+import { fetchProducts } from "../../Redux";
 
 const fecthData = async () => {
   try {
@@ -12,28 +14,21 @@ const fecthData = async () => {
   }
 };
 const HomePage = () => {
-  const [products, setProducts] = useState([]);
-  // useEffect(() => {
-  //   const data = fecthData();
-  //   data
-  //     .then((data) => {
-  //       setProducts(data.products);
-  //     })
-  //     .catch((err) => console.log("useeffect error: " + err));
-  // }, []);
-  // useEffect(() => {
-  //   console.log(products);
-  // }, [products]);
+  const [isFetched, setIsFetched] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const data = fecthData();
+    data
+      .then((data) => {
+        dispatch(fetchProducts(data.products));
+        setIsFetched(true);
+      })
+      .catch((err) => console.log("useeffect error: " + err));
+  }, []);
   return (
-    // <Heading margin="10px" inverse="red">
-    //   {products !== [] ? (
-    //     products.map((el) => <p key={el.id}>{el.name}</p>)
-    //   ) : (
-    //     <p>Loading</p>
-    //   )}
-    // </Heading>
     <>
       <Header />
+      {isFetched && <Content />}
     </>
   );
 };
