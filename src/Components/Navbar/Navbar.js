@@ -1,5 +1,5 @@
 import React from "react";
-import { NavbarContainer, NavItems, NavItem } from "./NavbarStyles";
+import { NavbarContainer, NavItems, NavItem, Cart } from "./NavbarStyles";
 
 const Navbar = () => {
   return (
@@ -8,7 +8,9 @@ const Navbar = () => {
         <NavItem>Monitors</NavItem>
         <NavItem>Headphones</NavItem>
         <NavItem>Keyboards</NavItem>
-        <NavItem>Cart</NavItem>
+        <NavItem>
+          <Cart />
+        </NavItem>
       </NavItems>
     </NavbarContainer>
   );

@@ -1,22 +1,39 @@
 import React, { useState } from "react";
-import { HeaderContainer, Logo, Hamburger, Close } from "./HeaderStyles";
+import { useMediaQuery } from "react-responsive";
+import {
+  HeaderContainer,
+  HeaderWrapper,
+  Logo,
+  Hamburger,
+  Close,
+} from "./HeaderStyles";
 import Search from "../Search/Search";
 import Navbar from "../Navbar/Navbar";
 
 const Header = () => {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  console.log(isMobile);
   const [toggle, setToggle] = useState(false);
   return (
     <HeaderContainer>
-      <Logo to="/" />
-      {/* <Search /> */}
-      <Navbar show={toggle} />
-      {toggle ? (
-        <>
-          <Close onClick={() => setToggle(!toggle)} />
-        </>
-      ) : (
-        <Hamburger onClick={() => setToggle(!toggle)} />
-      )}
+      <HeaderWrapper>
+        <Logo to="/">
+          My<span>Shop</span>
+        </Logo>
+        {!isMobile ? (
+          <>
+            <Search />
+            <Navbar />
+          </>
+        ) : toggle ? (
+          <>
+            <Close onClick={() => setToggle(!toggle)} />
+            <Navbar />
+          </>
+        ) : (
+          <Hamburger onClick={() => setToggle(!toggle)} />
+        )}
+      </HeaderWrapper>
     </HeaderContainer>
   );
 };
