@@ -1,6 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../../Redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../../../Redux";
 import {
   ProductContainer,
   ProductWrapper,
@@ -10,9 +10,12 @@ import {
   ProductPrice,
   AddToCart,
   ImgBox,
+  RemoveFrCart,
 } from "./ProductStyles";
 const Product = ({ product }) => {
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cartItems);
+  const show = cartItems.includes(product);
   return (
     <ProductContainer>
       <ProductWrapper>
@@ -23,10 +26,15 @@ const Product = ({ product }) => {
           <ProductName>{product.name}</ProductName>
           <ProductPrice>{product.price}$</ProductPrice>
         </ProductInfos>
-        <AddToCart onClick={() => dispatch(addToCart(product))}>
-          Add To Cart
-        </AddToCart>
-        {/* ADD TO CART || ALREADY ADDED */}
+        {show ? (
+          <RemoveFrCart onClick={() => dispatch(removeFromCart(product))}>
+            Remove From Cart
+          </RemoveFrCart>
+        ) : (
+          <AddToCart onClick={() => dispatch(addToCart(product))}>
+            Add To Cart
+          </AddToCart>
+        )}
       </ProductWrapper>
     </ProductContainer>
   );

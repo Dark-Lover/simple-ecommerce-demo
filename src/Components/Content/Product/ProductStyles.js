@@ -47,6 +47,7 @@ export const ProductPrice = styled.h2`
   font-size: 1.15rem;
   color: #8e44ad;
 `;
+
 export const AddToCart = styled.button`
   cursor: pointer;
   background-color: white;
@@ -63,5 +64,25 @@ export const AddToCart = styled.button`
   &:hover {
     background-color: #8e44ad;
     color: white;
+  }
+`;
+export const RemoveFrCart = styled.button`
+  cursor: pointer;
+  background-color: #8e44ad;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+  width: 60%;
+  align-self: center;
+  padding: 0.5rem;
+  border: 2px solid #8e44ad;
+  color: white;
+  margin: 0.5rem;
+  transition: all 0.25s ease-in-out;
+  &:hover {
+    color: #8e44ad;
+
+    background-color: white;
   }
 `;
