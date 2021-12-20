@@ -4,7 +4,7 @@ import GlobalStyle from "./GlobalStyles";
 import Cart from "./Pages/Cart/Cart";
 import HomePage from "./Pages/Homepage/HomePage";
 import store from "./Redux/store";
-import Category from "./Pages/Category.js/Category";
+import Category from "./Pages/Category/Category";
 
 function App() {
   return (

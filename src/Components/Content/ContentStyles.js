@@ -11,17 +11,17 @@ export const ContentWrapper = styled.div`
   flex-flow: column;
 `;
 export const ContentHeading = styled.h1`
-  display: flex;
-  justify-content: center;
+  display: block;
+  text-align: center;
   padding: 1rem 2rem;
   color: #8e44ad;
   letter-spacing: 0.03rem;
   font-weight: 500;
   &::first-letter {
-    font-size: 5rem;
+    text-transform: capitalize;
   }
   @media screen and (min-width: 768px) {
-    justify-content: start;
+    text-align: left;
   }
 `;
 export const Products = styled.div`

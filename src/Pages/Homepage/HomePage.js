@@ -14,21 +14,24 @@ const fecthData = async () => {
   }
 };
 const HomePage = () => {
-  const [isFetched, setIsFetched] = useState(false);
+  const myData = useSelector((state) => state.allProducts);
   const dispatch = useDispatch();
   useEffect(() => {
-    const data = fecthData();
-    data
-      .then((data) => {
-        dispatch(fetchProducts(data.products));
-        setIsFetched(true);
-      })
-      .catch((err) => console.log("useeffect error: " + err));
+    console.log(myData);
+    //check redux state before fetching to avoid multiple fetching after moving from link to other
+    if (myData.length === 0) {
+      const data = fecthData();
+      data
+        .then((data) => {
+          dispatch(fetchProducts(data.products));
+        })
+        .catch((err) => console.log("useeffect error: " + err));
+    }
   }, []);
   return (
     <>
       <Header />
-      {isFetched && <Content />}
+      {myData && <Content />}
     </>
   );
 };

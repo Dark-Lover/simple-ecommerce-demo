@@ -1,15 +1,23 @@
 import React from "react";
 import { NavbarContainer, NavItems, NavItem, Cart } from "./NavbarStyles";
+import SmallCart from "./SmallCart/SmallCart";
 
-const Navbar = () => {
+const Navbar = ({ closeMenu }) => {
   return (
     <NavbarContainer>
       <NavItems>
-        <NavItem to="/monitors">Monitors</NavItem>
-        <NavItem to="/headphones">Headphones</NavItem>
-        <NavItem to="/keyboards">Keyboards</NavItem>
+        <NavItem to="/monitors" onClick={() => closeMenu()}>
+          Monitors
+        </NavItem>
+        <NavItem to="/headphones" onClick={() => closeMenu()}>
+          Headphones
+        </NavItem>
+        <NavItem to="/keyboards" onClick={() => closeMenu()}>
+          Keyboards
+        </NavItem>
         <NavItem to="/cart">
-          <Cart />
+          {/* <Cart /> */}
+          <SmallCart />
         </NavItem>
       </NavItems>
     </NavbarContainer>

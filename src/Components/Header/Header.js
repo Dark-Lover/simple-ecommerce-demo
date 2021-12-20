@@ -7,12 +7,14 @@ import {
   Hamburger,
   Close,
 } from "./HeaderStyles";
-import Search from "../Search/Search";
 import Navbar from "../Navbar/Navbar";
 
 const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const [toggle, setToggle] = useState(false);
+  const closeMenu = () => {
+    setToggle(false);
+  };
   return (
     <HeaderContainer>
       <HeaderWrapper>
@@ -21,16 +23,17 @@ const Header = () => {
         </Logo>
         {!isMobile ? (
           <>
-            <Search />
-            <Navbar />
+            <Navbar closeMenu={closeMenu} />
           </>
         ) : toggle ? (
           <>
             <Close onClick={() => setToggle(!toggle)} />
-            <Navbar />
+            <Navbar closeMenu={closeMenu} />
           </>
         ) : (
-          <Hamburger onClick={() => setToggle(!toggle)} />
+          <>
+            <Hamburger onClick={() => setToggle(!toggle)} />
+          </>
         )}
       </HeaderWrapper>
     </HeaderContainer>

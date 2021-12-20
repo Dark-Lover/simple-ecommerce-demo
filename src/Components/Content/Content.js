@@ -10,13 +10,15 @@ import { useSelector } from "react-redux";
 const Content = ({ location }) => {
   const data = useSelector((state) => state.allProducts);
   const heading = location ? location : "All Products";
-  // const dataToShow =
+  const dataToShow = location
+    ? data.filter((el) => el.category === location)
+    : data;
   return (
     <ContentContainer>
       <ContentWrapper>
         <ContentHeading>{heading}</ContentHeading>
         <Products>
-          {data.map((product) => (
+          {dataToShow.map((product) => (
             <Product key={product.id} product={product} />
           ))}
         </Products>

@@ -15,13 +15,15 @@ const reducer = (state = initialState, action) => {
     case ADD_TO_CART:
       return {
         ...state,
-        cartItems: state.cartItems.push(action.payload),
+        cartItems: [...state.cartItems, action.payload],
       };
     case REMOVE_FROM_CART:
       return {
         ...state,
         cartItems: state.cartItems.filter((el) => el.id !== action.payload.id),
       };
+    default:
+      return state;
   }
 };
 

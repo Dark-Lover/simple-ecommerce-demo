@@ -49,6 +49,8 @@ export const NavItem = styled(Link)`
     border: 2px solid white;
     width: 30%;
     margin: 1rem auto;
+    color: white;
+    padding: 0.5rem 1rem;
     &:hover {
       color: #8e44ad;
     }
@@ -65,9 +67,7 @@ export const NavItem = styled(Link)`
 `;
 
 export const Cart = styled(FaShoppingCart)`
-  background-color: transparent;
+  /* background-color: transparent;
   transition: all 0.25s ease;
-  font-size: 1.2rem;
-  &:hover {
-  }
+  font-size: 1.2rem; */
 `;

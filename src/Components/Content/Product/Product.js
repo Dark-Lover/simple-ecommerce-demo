@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../Redux";
 import {
   ProductContainer,
   ProductWrapper,
@@ -10,6 +12,7 @@ import {
   ImgBox,
 } from "./ProductStyles";
 const Product = ({ product }) => {
+  const dispatch = useDispatch();
   return (
     <ProductContainer>
       <ProductWrapper>
@@ -20,7 +23,10 @@ const Product = ({ product }) => {
           <ProductName>{product.name}</ProductName>
           <ProductPrice>{product.price}$</ProductPrice>
         </ProductInfos>
-        <AddToCart>Add To Cart</AddToCart>
+        <AddToCart onClick={() => dispatch(addToCart(product))}>
+          Add To Cart
+        </AddToCart>
+        {/* ADD TO CART || ALREADY ADDED */}
       </ProductWrapper>
     </ProductContainer>
   );
