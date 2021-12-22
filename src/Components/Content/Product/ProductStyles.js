@@ -80,9 +80,4 @@ export const RemoveFrCart = styled.button`
   color: white;
   margin: 0.5rem;
   transition: all 0.25s ease-in-out;
-  &:hover {
-    color: #8e44ad;
-
-    background-color: white;
-  }
 `;
