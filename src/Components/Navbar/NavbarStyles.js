@@ -18,7 +18,7 @@ export const NavItems = styled.ul`
   background-color: #8e44ad;
   width: 60%;
   height: 100vh;
-  padding: 4rem 2rem;
+  padding: 4rem 1rem;
   transition: all 0.25s ease-in-out;
   align-items: center;
 

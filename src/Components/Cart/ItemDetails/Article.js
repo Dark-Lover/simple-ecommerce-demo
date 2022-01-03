@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
 import styled from "styled-components";
+
 const ArticleContainer = styled.div`
+  display: flex;
+  justify-content: center;
   border-radius: 0.2rem;
   width: 100%;
-  margin: 1rem 2rem;
+  margin: 0.5rem 2rem;
   background-color: white;
   box-shadow: 0px 0px 25px 1px rgba(142, 68, 173, 0.37);
+  @media screen and (min-width: 768px) {
+    width: 70%;
+  }
 `;
 // const ArticleWrapper = styled.div`
 //   border-radius: 0.2rem;
@@ -22,12 +28,13 @@ const ArticleWrapper = styled.div`
   display: flex;
 `;
 const ImgBox = styled.div`
-  width: 50%;
-  height: 200px;
-  background-color: green;
+  width: 120px;
+  height: 90px;
+  /* background-color: green; */
   overflow: hidden;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
 `;
 const ArticleImg = styled.img`
   z-index: 1;
@@ -45,11 +52,16 @@ const ArticleImg = styled.img`
 `;
 
 const ArticleInfos = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: orange;
+  align-items: center;
+  gap: 1rem;
   padding: 0.5rem;
+  margin: auto;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 const ArticleCat = styled(Link)`
   text-decoration: none;
@@ -58,39 +70,84 @@ const ArticleCat = styled(Link)`
   display: flex;
   align-items: center;
 `;
-const ArticleName = styled.h3``;
-const ArticleDesc = styled.p``;
-const ArticleQty = styled.div``;
-const QtyInput = styled.input`
-  width: 20px;
+const ArticleName = styled.h3`
+  color: #8e44ad;
+  font-size: 1rem;
+  display: block;
+  &::first-letter {
+    text-transform: capitalize;
+  }
 `;
-const QtyControls = styled.div``;
-const IncreaseQty = styled(AiOutlinePlusCircle)``;
-const DecreaseQty = styled(AiOutlineMinusCircle)``;
+const ArticlePrice = styled.p`
+  /* font-size: 0.9rem; */
+  font-weight: 500;
+  @media screen and (min-width: 768px) {
+    min-width: 90px;
+  }
+`;
+const ArticleQty = styled.div`
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+`;
+const QtyInput = styled.input`
+  width: 40px;
+  margin-left: 0.5rem;
+  text-align: center;
+  width: 3rem;
+  outline: none;
+  &::-webkit-inner-spin-button {
+    opacity: 1;
+  }
+`;
+const Total = styled.div`
+  font-weight: 500;
+  @media screen and (min-width: 768px) {
+    min-width: 85px;
+  }
+`;
+// const QtyControls = styled.div`
+//   display: flex;
+//   align-items: center;
+// `;
+// const IncreaseQty = styled(AiOutlinePlusCircle)`
+//   color: green;
+//   margin-right: 0.2rem;
+//   cursor: pointer;
+// `;
+// const DecreaseQty = styled(AiOutlineMinusCircle)`
+//   color: red;
+//   cursor: pointer;
+// `;
 
-const Article = () => {
+const Article = ({ data }) => {
+  const [qty, setQty] = useState(1);
   return (
     <ArticleContainer>
       <ArticleWrapper>
-        <ImgBox>
-          <ArticleImg />
-        </ImgBox>
         <ArticleInfos>
-          <ArticleCat>
-            <IoIosArrowForward />
-            Heading
-          </ArticleCat>
-          <ArticleName>Apple Headephone</ArticleName>
-          <ArticleDesc>
-            its here for you, we are going to impress you.
-          </ArticleDesc>
+          <ImgBox>
+            <ArticleImg src={data.img}></ArticleImg>
+          </ImgBox>
+          <ArticleName>{data.name}</ArticleName>
+          <ArticlePrice>
+            Price: <span>{data.price} $</span>
+          </ArticlePrice>
           <ArticleQty>
-            <QtyInput />
-            <QtyControls>
-              <IncreaseQty />
-              <DecreaseQty />
-            </QtyControls>
+            Qty:
+            <QtyInput
+              id="quantity"
+              name="quantity"
+              type="number"
+              min="1"
+              max="5"
+              placeholder={qty}
+              onChange={(e) => setQty(e.target.value)}
+            />
           </ArticleQty>
+          <Total>
+            Total: <span>{data.price * qty} $</span>
+          </Total>
         </ArticleInfos>
       </ArticleWrapper>
     </ArticleContainer>

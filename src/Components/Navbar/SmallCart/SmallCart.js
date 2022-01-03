@@ -12,7 +12,11 @@ const SmallCart = () => {
   return (
     <SCartContainer>
       <SCartWrapper>
-        <SCartNotif>{cartItems.length}</SCartNotif>
+        {cartItems.length !== 0 ? (
+          <SCartNotif>{cartItems.length}</SCartNotif>
+        ) : (
+          ""
+        )}
         <SCartIcon />
       </SCartWrapper>
     </SCartContainer>

@@ -1,49 +1,26 @@
 import React from "react";
-import styled from "styled-components";
 import Article from "./ItemDetails/Article";
-
-const CartPageContainer = styled.div`
-  display: flex;
-  flex-flow: column;
-  max-width: 1280px;
-  margin: auto;
-`;
-const CartPageWrapper = styled.div`
-  display: flex;
-  flex-flow: column;
-`;
-const CartHeading = styled.h1`
-  display: block;
-  font-size: 1.5rem;
-  text-align: center;
-  padding: 1rem 2rem;
-  color: #8e44ad;
-  letter-spacing: 0.03rem;
-  font-weight: 500;
-  &::first-letter {
-    text-transform: capitalize;
-  }
-  @media screen and (min-width: 768px) {
-    text-align: left;
-  }
-`;
-const Articles = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
+import { useSelector } from "react-redux";
+import {
+  CartPageContainer,
+  CartPageWrapper,
+  CartHeading,
+  Articles,
+  EmptyCart,
+} from "./CartStyles";
 const Cart = () => {
+  const cartItems = useSelector((state) => state.cartItems);
+  console.log("cart page use selector: ", cartItems);
   return (
     <CartPageContainer>
       <CartPageWrapper>
         <CartHeading>My Cart</CartHeading>
         <Articles>
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
+          {cartItems.length !== 0 ? (
+            cartItems.map((el) => <Article data={el} key={el.id} />)
+          ) : (
+            <EmptyCart>Your Cart is Empty</EmptyCart>
+          )}
         </Articles>
       </CartPageWrapper>
     </CartPageContainer>
