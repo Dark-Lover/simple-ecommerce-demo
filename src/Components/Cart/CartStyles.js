@@ -9,6 +9,10 @@ export const CartPageContainer = styled.div`
 export const CartPageWrapper = styled.div`
   display: flex;
   flex-flow: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 export const CartHeading = styled.h1`
   display: block;

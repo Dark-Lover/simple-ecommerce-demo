@@ -8,13 +8,13 @@ import {
   Articles,
   EmptyCart,
 } from "./CartStyles";
+import Total from "../Total/Total";
 const Cart = () => {
   const cartItems = useSelector((state) => state.cartItems);
-  console.log("cart page use selector: ", cartItems);
   return (
     <CartPageContainer>
+      <CartHeading>My Cart</CartHeading>
       <CartPageWrapper>
-        <CartHeading>My Cart</CartHeading>
         <Articles>
           {cartItems.length !== 0 ? (
             cartItems.map((el) => <Article data={el} key={el.id} />)
@@ -22,6 +22,7 @@ const Cart = () => {
             <EmptyCart>Your Cart is Empty</EmptyCart>
           )}
         </Articles>
+        {cartItems.length !== 0 ? <Total /> : ""}
       </CartPageWrapper>
     </CartPageContainer>
   );
